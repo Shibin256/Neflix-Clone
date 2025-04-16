@@ -71,3 +71,23 @@
 .nav-dark{
     background: #141414;
 }
+
+@media (max-width:800px){
+    .Navbar{
+        padding: 20px 4%;
+    }
+    .Navbar-left ul{
+        display: none;
+    }
+    .Navbar img{
+        height: 25px;
+    }
+}
+@media (max-width:800px){
+    .Navbar img{
+        height: 20px;
+    }
+    .Navbar-right{
+        gap: 10px;
+    }
+}

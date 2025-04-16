@@ -5,6 +5,8 @@ import { Routes,Route, useNavigate } from 'react-router-dom'
 import Player from './pages/Player/Player'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
+import { ToastContainer, toast } from 'react-toastify';     //to pop up the error messages
+
 
 function App() {
 
@@ -18,13 +20,13 @@ function App() {
         }else{
           console.log("Logged Out")
           navigate('/login');
-
         }
     })
   },[])
 
   return (
     <div>
+       <ToastContainer theme='dark' />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login'  element={<Login />} />
