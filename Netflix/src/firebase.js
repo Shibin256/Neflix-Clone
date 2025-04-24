@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import {createUserWithEmailAndPassword,
      getAuth, 
@@ -11,17 +11,17 @@ import { toast } from "react-toastify";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBqlDKnkRI0kbdBww9PKmTVsyRs-oVxRHY",
-  authDomain: "netflix-clone-1cbbe.firebaseapp.com",
-  projectId: "netflix-clone-1cbbe",
-  storageBucket: "netflix-clone-1cbbe.firebasestorage.app",
-  messagingSenderId: "179109969335",
-  appId: "1:179109969335:web:952a8bb013423787633c32"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth=getAuth(app)
+const auth=getAuth(app)             //to get authonication from firebase
 const db= getFirestore(app)
 
 const signup=async (name,email,password)=> {

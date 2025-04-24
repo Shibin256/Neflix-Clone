@@ -16,10 +16,10 @@ const TItleCards = ({title, category}) => {
       }
     };
   
-    const handleWheel=(event)=>{
-      event.preventDefault();
-       cardsRef.current.scrollLeft+=event.deltaY;
-  }
+  //   const handleWheel=(event)=>{
+  //     event.preventDefault();
+  //      cardsRef.current.scrollLeft+=event.deltaY;
+  // }
 
     useEffect(()=>{
       
@@ -28,7 +28,7 @@ const TItleCards = ({title, category}) => {
     .then(res => setApiData(res.results))
     .catch(err => console.error(err));
 
-      cardsRef.current.addEventListener('wheel', handleWheel)
+      // cardsRef.current.addEventListener('wheel', handleWheel)
     },[])
 
   return (

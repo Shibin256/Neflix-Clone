@@ -6,12 +6,11 @@ import Player from './pages/Player/Player'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
 import { ToastContainer, toast } from 'react-toastify';     //to pop up the error messages
+import ContextProvider from './context/contextProvider'
 
 
 function App() {
-
   const navigate=useNavigate();
-
   useEffect(()=>{
     onAuthStateChanged(auth, async (user)=>{
         if(user){
@@ -26,12 +25,14 @@ function App() {
 
   return (
     <div>
+      <ContextProvider> 
        <ToastContainer theme='dark' />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login'  element={<Login />} />
         <Route path='/player/:id' element={<Player />} /> 
       </Routes>
+      </ContextProvider>
     </div>
   )
 }

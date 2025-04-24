@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Login.css'
 import logo from '../../assets/logo.png'
 import {login,signup} from '../../firebase'
 import netflix_spinner from '../../assets/netflix_spinner.gif'
+import MyContext from '../../context/myContext'
 
 
 const Login = () => {
-  const [signState,setSignState]=useState("Sign In")
+  const {logState}=useContext(MyContext)
+  const [signState,setSignState]=useState(logState)
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -26,7 +28,8 @@ const Login = () => {
   return (
     loading?<div className="login_spinner">
       <img src={netflix_spinner} alt="" />
-    </div>:
+    </div>
+    :
     <div className='Login'>
         <img src={logo} className='login-logo' alt="" />   
         <div className="login-form">
@@ -35,7 +38,7 @@ const Login = () => {
             { signState!=="Sign In" && 
             <input value={name} onChange={(e)=>{
               setName(e.target.value)
-              }} type="text" placeholder='Your name' name="" id="name" /> }
+              }} type="text" placeholder='Your name' id="name" /> }
 
             <input value={email} onChange={(e)=>{
               setEmail(e.target.value)
@@ -59,8 +62,6 @@ const Login = () => {
               <p>New to Netflix? <span onClick={()=> setSignState("Sign Up")}>Sign Up Now</span></p> 
               : 
              <p>Alredy have account? <span onClick={()=> setSignState("Sign In")}>Sign In Now</span></p>}
-            
-
           </div>
           </div>   
     </div>
